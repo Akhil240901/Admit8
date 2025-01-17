@@ -7,14 +7,16 @@ const Login = () => {
     console.log(values);
   };
   return (
-    <div>
-      <Form layout="vertical" onFinish={handleSubmit}>
+    <div className="container">
+      <Form className="form-body" layout="vertical" onFinish={handleSubmit}>
+        <h1>Login</h1>
         <Form.Item label="Name" name="name">
           <Input type="text" placeholder="Enter your name" />
         </Form.Item>
         <Form.Item label="Email" name="email">
           <Input type="email" placeholder="Enter your email" />
         </Form.Item>
+        <Link to="/register">New User?</Link>
         <button>Submit</button>
       </Form>
     </div>
