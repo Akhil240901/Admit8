@@ -1,11 +1,12 @@
 import express from "express";
 import morgan from "morgan";
+import dotenv from "dotenv";
 
 //initialize or reset object
 const app = express();
-const port = process.env.PORT;
 
 //middleware
+dotenv.config();
 app.use(express.json());
 
 //get method
@@ -15,6 +16,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.listen(port, () => {
+const port = process.env.PORT || 8080;
+app.listen(8080, () => {
   console.log(`server is running at ${port}`);
-});
+}); 
