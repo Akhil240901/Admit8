@@ -28,10 +28,8 @@ export const authMiddleware = async (req, res, next) => {
           success: false,
         });
       }
-
       // Attach the decoded user ID to the request body
       req.body.userId = decode.id;
-
       // Move to the next middleware or route handler
       next();
     });

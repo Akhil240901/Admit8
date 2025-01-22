@@ -3,11 +3,18 @@ import "../style/Loginstyle.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Input, message } from "antd";
 import axios from "axios";
+import { showLoading, hideLoading } from "../redux/features/alert";
+import { useDispatch } from "react-redux";
+
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const handleSubmit = async (values) => {
     try {
+      dispatch(showLoading());
       const res = await axios.post("/api/v1/user/login", values);
+      dispatch(hideLoading());
       console.log("user token " + res.data.token);
       if (res.data.success) {
         localStorage.setItem("token", res.data.token);
@@ -20,6 +27,7 @@ const Login = () => {
         message.error("Registration failed: " + res.data.message);
       }
     } catch (error) {
+      dispatch(hideLoading());
       console.error("Axios error:", error.response || error);
       message.error(
         error.response?.data?.message ||
