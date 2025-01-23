@@ -3,7 +3,7 @@ import "../style/Loginstyle.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Input, message } from "antd";
 import axios from "axios";
-import { showLoading, hideLoading } from "../redux/features/alert";
+import { showLoading, hideLoading } from "../redux/features/alertSlice";
 import { useDispatch } from "react-redux";
 
 const Login = () => {
@@ -15,7 +15,7 @@ const Login = () => {
       dispatch(showLoading());
       const res = await axios.post("/api/v1/user/login", values);
       dispatch(hideLoading());
-      console.log("user token " + res.data.token);
+
       if (res.data.success) {
         localStorage.setItem("token", res.data.token);
         //console.log("After storing:", localStorage.getItem("token")); // Store the token

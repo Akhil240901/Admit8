@@ -3,7 +3,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 import router from "./routes/userRoutes.js";
-
+import cors from "cors";
 // Load environment variables
 dotenv.config();
 
@@ -15,7 +15,7 @@ connectDB();
 
 // Middleware
 app.use(express.json());
-
+app.use(cors());
 // Log requests in development mode
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
@@ -35,7 +35,7 @@ app.use((req, res) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 const server = app.listen(PORT, () => {
   console.log(`Server is running at ${PORT}`);
 });

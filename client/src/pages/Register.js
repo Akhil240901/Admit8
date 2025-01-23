@@ -3,7 +3,7 @@ import "../style/Loginstyle.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Input, message } from "antd";
 import axios from "axios";
-import { showLoading, hideLoading } from "../redux/features/alert";
+import { showLoading, hideLoading } from "../redux/features/alertSlice";
 import { useDispatch } from "react-redux";
 
 const Register = () => {

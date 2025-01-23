@@ -1,12 +1,13 @@
 {
   "name": "client",
-  "proxy": "http://localhost:5000",
+  "proxy": "http://localhost:8080",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
     "antd": "^5.23.1",
     "axios": "^1.7.9",
+    "buffer": "^6.0.3",
     "cra-template": "1.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

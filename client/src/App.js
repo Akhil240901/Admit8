@@ -10,7 +10,7 @@ import PublicRoute from "./component/PublicRoute";
 
 function App() {
   const loading = useSelector((state) => state.alerts.loading);
-  console.log(loading);
+  // console.log(loading);
   return (
     <div>
       <BrowserRouter>

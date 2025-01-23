@@ -1,0 +1,77 @@
+.main {
+  padding: 10px;
+  height: 100vh;
+}
+.layout {
+  display: flex;
+}
+.sidebar {
+  min-height: 100%;
+  width: 300px;
+  border-radius: 5px;
+  background-color: rgb(51, 1, 1);
+  box-shadow: 0 0 5px gray;
+  margin-right: 20px;
+  color: white;
+}
+.menu-item{
+   margin-top: 20px;
+   padding: 20px;
+
+}
+.menu-item ,i{
+  padding: 20px;
+  color: white;
+
+}
+.menu-item ,a{
+  text-decoration: none;
+  color: white;
+  
+}
+.content {
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  height: 10vh;
+  border-radius: 5px;
+  box-shadow: 0 0 2px gray;
+  margin-bottom: 20px;
+}
+
+.body {
+  height: 90vh;
+  margin-bottom: 20px;
+  box-shadow: 0 0 2px gray;
+}
+
+.logo h5 {
+  text-align: center;
+  justify-items: center;
+  font-weight: 600;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  padding: 10px;
+}
+
+.active{
+  background-color: white;
+  color: black;
+  padding: 10px;
+}
+
+.active i, .active a{
+  color: black;
+}
+
+.header-content{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  margin-right: 10px;
+}
+.header-content i, .header-content a{
+  color: blue;
+}
