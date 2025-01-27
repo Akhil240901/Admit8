@@ -1,12 +1,25 @@
 import React from "react";
 import "../style/Layoutstyle.css";
-import { menuData } from "./Data/data";
-import { Link, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { adminData, menuData, userData } from "./Data/data";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { message } from "antd";
+import clearUser from "../redux/features/userSlice";
 const Layout = ({ children }) => {
+  const navigate = useNavigate();
   const location = useLocation();
   const { user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   console.log("user in redux" + user.name);
+
+  const logoutHandler = () => {
+    localStorage.clear();
+    dispatch(clearUser());
+    message.success("Logout successfully");
+    navigate("/login");
+  };
+
+  const sidebarMenu = user?.isAdmin ? adminData : userData;
   return (
     <div className="main">
       <div className="layout">
@@ -16,7 +29,7 @@ const Layout = ({ children }) => {
             <hr />
           </div>
           <div className="menu">
-            {menuData.map((menu, index) => {
+            {sidebarMenu.map((menu, index) => {
               const isActive = location.pathname === menu.path;
               return (
                 <>
@@ -27,6 +40,10 @@ const Layout = ({ children }) => {
                 </>
               );
             })}
+            <div className={`menu-item`} onClick={logoutHandler}>
+              <i className="fa-solid fa-right-from-bracket" />
+              <Link to="/login">Logout</Link>
+            </div>
           </div>
         </div>
 

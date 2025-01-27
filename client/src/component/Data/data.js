@@ -1,7 +1,7 @@
 import { icons } from "antd/es/image/PreviewGroup";
 import React from "react";
 
-export const menuData = [
+export const userData = [
   {
     name: "Home",
     path: "/",
@@ -22,9 +22,23 @@ export const menuData = [
     path: "/profile",
     icons: "fa-solid fa-user",
   },
+];
+
+export const adminData = [
   {
-    name: "Logout",
-    path: "/logout",
-    icons: "fa-solid fa-right-from-bracket",
+    name: "Home",
+    path: "/",
+    icons: "fa-solid fa-house-chimney",
+  },
+
+  {
+    name: "Doctors",
+    path: "/doctor",
+    icons: "fa-solid fa-user-doctor",
+  },
+  {
+    name: "Profile",
+    path: "/profile",
+    icons: "fa-solid fa-user",
   },
 ];
