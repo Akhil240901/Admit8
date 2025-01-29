@@ -1,16 +1,15 @@
 import React from "react";
 import "../style/Layoutstyle.css";
-import { adminData, menuData, userData } from "./Data/data";
+import { adminData, userData } from "./Data/data";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { message } from "antd";
+import { Badge, message } from "antd";
 import clearUser from "../redux/features/userSlice";
 const Layout = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  console.log("user in redux" + user.name);
 
   const logoutHandler = () => {
     localStorage.clear();
@@ -50,10 +49,13 @@ const Layout = ({ children }) => {
         <div className="content">
           <div className="header">
             <div className="header-content">
-              <i className="fa-solid fa-bell" />
+              <Badge count={user && user.notification.length}>
+                <i className="fa-solid fa-bell" />
+              </Badge>
               <Link to="/profile">{user?.name}</Link>
             </div>
           </div>
+
           <div className="body">{children}</div>
         </div>
       </div>

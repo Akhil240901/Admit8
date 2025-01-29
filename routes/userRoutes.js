@@ -3,6 +3,7 @@ import {
   authController,
   loginController,
   registerController,
+  applyDoctorController,
 } from "../controllers/userController.js";
 import { authMiddleware } from "../middleware/authMiddleware.js";
 const router = express.Router();
@@ -13,4 +14,7 @@ router.post("/register", registerController);
 router.post("/login", loginController);
 //POST || Auth
 router.post("/getUserData", authMiddleware, authController);
+//post || Apply doctor
+router.post("/apply-doctor", authMiddleware, applyDoctorController);
+//post || getAllNotification
 export default router;

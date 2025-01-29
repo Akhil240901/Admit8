@@ -37,6 +37,11 @@ export const adminData = [
     icons: "fa-solid fa-user-doctor",
   },
   {
+    name: "Users",
+    path: "/user",
+    icons: "fa-solid fa-user-doctor",
+  },
+  {
     name: "Profile",
     path: "/profile",
     icons: "fa-solid fa-user",

@@ -14,6 +14,7 @@ const Login = () => {
     try {
       dispatch(showLoading());
       const res = await axios.post("/api/v1/user/login", values);
+      window.location.reload();
       dispatch(hideLoading());
 
       if (res.data.success) {
@@ -31,7 +32,7 @@ const Login = () => {
       console.error("Axios error:", error.response || error);
       message.error(
         error.response?.data?.message ||
-          "Something went wrong. Please try again later."
+          "Something went wrong. Please try again later..."
       );
     }
   };

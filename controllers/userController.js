@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../model/userModel.js";
+import doctorModel from "../model/doctorModel.js";
 export const registerController = async (req, res) => {
   try {
     const existingUser = await User.findOne({ email: req.body.email });
@@ -72,6 +73,36 @@ export const authController = async (req, res) => {
       message: "auth error",
       success: false,
       error,
+    });
+  }
+};
+
+export const applyDoctorController = async (req, res) => {
+  try {
+    const newDoctor = await doctorModel({ ...req.body, status: "pending" });
+    console.log(newDoctor);
+    await newDoctor.save();
+    const adminUser = await User.findOne({ isAdmin: true });
+    const notification = adminUser.notification;
+    notification.push({
+      type: "apply-doctor-request",
+      message: `${newDoctor.firstName} ${newDoctor.lastName} has applied for a Doctor Account`,
+      data: {
+        doctorId: newDoctor._id,
+        name: newDoctor.firstName + " " + newDoctor.lastName,
+        onClickPath: "/admin/doctors",
+      },
+    });
+    await User.findByIdAndUpdate(adminUser._id, { notification }),
+      res.status(201).send({
+        success: true,
+        message: "Doctor Account Applied Successfully",
+      });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Doctor account cant applied !!!!",
     });
   }
 };
