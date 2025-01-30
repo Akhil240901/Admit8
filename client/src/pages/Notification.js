@@ -25,19 +25,40 @@ const Notification = () => {
       );
       dispatch(hideLoading());
       if (res.data.success) {
-        message.success(res.data.message);
+        message.success("Marked as read");
       } else {
         message.error(res.data.message);
       }
     } catch (error) {
-      console.error(error);
+      console.error("api" + error);
       dispatch(hideLoading());
       message.error("Something went wrong!");
     }
   };
 
   const deleteAllHandler = async () => {
-    message.warning("Delete all functionality not implemented yet!");
+    try {
+      dispatch(showLoading());
+      const res = await axios.post(
+        "/api/v1/user/delete-all-notification",
+        { userId: user._id },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      dispatch(hideLoading());
+      if (res.data.success) {
+        message.success("Deleted notification successfully");
+      } else {
+        message.error(res.data.message);
+      }
+    } catch (error) {
+      console.error("api" + error);
+      dispatch(hideLoading());
+      message.error("Something went wrong!");
+    }
   };
 
   // Define tab items correctly
@@ -87,6 +108,20 @@ const Notification = () => {
               Delete all
             </h4>
           </div>
+          {user?.seenNotification.map((notificationMSG, index) => (
+            <div
+              key={notificationMSG.id || index} // Ensure a unique key
+              className="card"
+              style={{ cursor: "pointer", padding: "10px", margin: "5px 0" }}
+            >
+              <div
+                className="card-text"
+                onClick={() => navigate(notificationMSG.onClickPath)} // Wrapped in an arrow function
+              >
+                {notificationMSG.message}
+              </div>
+            </div>
+          ))}
         </>
       ),
     },

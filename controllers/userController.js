@@ -109,17 +109,53 @@ export const applyDoctorController = async (req, res) => {
 
 export const getAllNotificationController = async (req, res) => {
   try {
-    const user = User.findById({ _id: req.body.userId });
-    const notification = user.notification;
-    const seenNotification = user.seenNotification;
-    seenNotification.push(...notification);
+    const user = await User.findById(req.body.userId);
+
+    if (!user) {
+      return res.status(404).send({
+        success: false,
+        message: "User not found",
+      });
+    }
+    const _notification = user.notification;
+    const _seenNotification = user.seenNotification;
+    _seenNotification.push(..._notification);
     user.notification = [];
-    user.seenNotification = notification;
+    user.seenNotification = _notification;
     const updatedUser = await user.save();
     res.status(200).send({
       success: true,
       message: "all notification marked as read",
       data: updatedUser,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Error in notification",
+      success: false,
+      error,
+    });
+  }
+};
+
+export const deleteAllNotificationController = async (req, res) => {
+  try {
+    const user = await User.findById(req.body.userId);
+
+    if (!user) {
+      return res.status(404).send({
+        success: false,
+        message: "User not found",
+      });
+    }
+    user.notification = [];
+    user.seenNotification = [];
+
+    const userData = await user.save();
+    res.status(200).send({
+      success: true,
+      message: "deleted all notifications",
+      data: userData,
     });
   } catch (error) {
     console.log(error);

@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
           <div className="menu">
             {sidebarMenu.map((menu, index) => {
               const isActive = location.pathname === menu.path;
-              console.log(index);
+
               return (
                 <>
                   <div
