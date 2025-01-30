@@ -30,9 +30,13 @@ const Layout = ({ children }) => {
           <div className="menu">
             {sidebarMenu.map((menu, index) => {
               const isActive = location.pathname === menu.path;
+              console.log(index);
               return (
                 <>
-                  <div className={`"menu-item" ${isActive && "active"}`}>
+                  <div
+                    key={menu.path || index}
+                    className={`"menu-item" ${isActive && "active"}`}
+                  >
                     <i className={menu.icons} />
                     <Link to={menu.path}>{menu.name}</Link>
                   </div>
@@ -49,7 +53,12 @@ const Layout = ({ children }) => {
         <div className="content">
           <div className="header">
             <div className="header-content">
-              <Badge count={user && user.notification.length}>
+              <Badge
+                count={user && user.notification.length}
+                onClick={() => {
+                  navigate("/notification");
+                }}
+              >
                 <i className="fa-solid fa-bell" />
               </Badge>
               <Link to="/profile">{user?.name}</Link>

@@ -106,3 +106,27 @@ export const applyDoctorController = async (req, res) => {
     });
   }
 };
+
+export const getAllNotificationController = async (req, res) => {
+  try {
+    const user = User.findById({ _id: req.body.userId });
+    const notification = user.notification;
+    const seenNotification = user.seenNotification;
+    seenNotification.push(...notification);
+    user.notification = [];
+    user.seenNotification = notification;
+    const updatedUser = await user.save();
+    res.status(200).send({
+      success: true,
+      message: "all notification marked as read",
+      data: updatedUser,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Error in notification",
+      success: false,
+      error,
+    });
+  }
+};
