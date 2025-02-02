@@ -9,7 +9,7 @@ export const userData = [
   },
   {
     name: "Apointment",
-    path: "/apointment",
+    path: `/apointment`,
     icons: "fa-solid fa-calendar-check",
   },
   {
@@ -33,12 +33,12 @@ export const adminData = [
 
   {
     name: "Doctors",
-    path: "/doctor",
+    path: "/admin/doctors",
     icons: "fa-solid fa-user-doctor",
   },
   {
     name: "Users",
-    path: "/user",
+    path: "/admin/users",
     icons: "fa-solid fa-user-doctor",
   },
   {

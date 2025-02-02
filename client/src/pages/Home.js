@@ -1,8 +1,11 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../component/Layout";
+import { Row } from "antd";
+import DoctorList from "../component/DoctorList";
 
 const Home = () => {
+  const [doctor, setDoctor] = useState([]);
   const getUserData = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -12,17 +15,17 @@ const Home = () => {
         console.error("No token found in localStorage");
         return;
       }
-      const res = await axios.post(
-        "/api/v1/user/getUserdata", // Endpoint
-        {}, // Request body (can be omitted if not needed)
+      const res = await axios.get(
+        "/api/v1/user/getAllDoctors", // Endpoint
         {
           headers: {
             Authorization: `Bearer ${token}`, // Correct "Bearer" format
           },
         }
       );
-      // Log or handle the API response
-      console.log("User data:", res.data);
+      if (res.data.success) {
+        setDoctor(res.data.data[0] || []);
+      }
     } catch (error) {
       // Log the error and handle it appropriately
       if (error.response) {
@@ -40,6 +43,7 @@ const Home = () => {
   return (
     <Layout>
       <h1>Home</h1>
+      <Row>{doctor && <DoctorList doctor={doctor} />}</Row>
     </Layout>
   );
 };

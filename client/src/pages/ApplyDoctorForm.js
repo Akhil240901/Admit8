@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import axios from "axios";
-
+import moment from "moment";
 const ApplyDoctorForm = () => {
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -16,7 +16,14 @@ const ApplyDoctorForm = () => {
       dispatch(showLoading());
       const res = await axios.post(
         "/api/v1/user/apply-doctor",
-        { ...values, userId: user._id },
+        {
+          ...values,
+          userId: user._id,
+          timing: [
+            moment(values.timing[0]).format("HH:mm"),
+            moment(values.timing[1]).format("HH:mm"),
+          ],
+        },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -94,7 +101,7 @@ const ApplyDoctorForm = () => {
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item label="Timing" name="timing">
-              <TimePicker.RangePicker />
+              <TimePicker.RangePicker format="HH:mm" />
             </Form.Item>
           </Col>
         </Row>

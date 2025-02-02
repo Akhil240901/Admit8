@@ -18,7 +18,32 @@ const Layout = ({ children }) => {
     navigate("/login");
   };
 
-  const sidebarMenu = user?.isAdmin ? adminData : userData;
+  /**
+   * doctor menu
+   */
+  const doctorData = [
+    {
+      name: "Home",
+      path: "/",
+      icons: "fa-solid fa-house-chimney",
+    },
+    {
+      name: "Apointment",
+      path: "/apointment",
+      icons: "fa-solid fa-calendar-check",
+    },
+    {
+      name: "Profile",
+      path: `/doctors/profile/${user?._id}`,
+      icons: "fa-solid fa-user",
+    },
+  ];
+
+  const sidebarMenu = user?.isAdmin
+    ? adminData
+    : user.isDoctor
+    ? doctorData
+    : userData;
   return (
     <div className="main">
       <div className="layout">

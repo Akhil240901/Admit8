@@ -3,6 +3,8 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 import router from "./routes/userRoutes.js";
+import adminRouter from "./routes/adminRoutes.js";
+import doctorRouter from "./routes/doctorRoutes.js";
 import cors from "cors";
 // Load environment variables
 dotenv.config();
@@ -23,7 +25,8 @@ if (process.env.NODE_ENV === "development") {
 
 // Routes
 app.use("/api/v1/user", router);
-
+app.use("/api/v1/admin", adminRouter);
+app.use("/api/v1/doctor", doctorRouter);
 // Default route
 app.get("/", (req, res) => {
   res.send("API is running...");

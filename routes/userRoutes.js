@@ -6,6 +6,9 @@ import {
   applyDoctorController,
   getAllNotificationController,
   deleteAllNotificationController,
+  getAllDoctorListController,
+  bookAppointmentController,
+  bookingAvailabilityController,
 } from "../controllers/userController.js";
 import { authMiddleware } from "../middleware/authMiddleware.js";
 const router = express.Router();
@@ -30,5 +33,18 @@ router.post(
   "/delete-all-notification",
   authMiddleware,
   deleteAllNotificationController
+);
+
+//get || all doctorlist
+router.get("/getAllDoctors", authMiddleware, getAllDoctorListController);
+
+//POSt || book apointment
+router.post("/book-appointment", authMiddleware, bookAppointmentController);
+
+//POSt || book apointment
+router.post(
+  "/checkAvailability",
+  authMiddleware,
+  bookingAvailabilityController
 );
 export default router;
