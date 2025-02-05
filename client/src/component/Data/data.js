@@ -8,8 +8,8 @@ export const userData = [
     icons: "fa-solid fa-house-chimney",
   },
   {
-    name: "Apointment",
-    path: `/apointment`,
+    name: "Appointment",
+    path: `/appointment`,
     icons: "fa-solid fa-calendar-check",
   },
   {

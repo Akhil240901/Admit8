@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
     },
     {
       name: "Apointment",
-      path: "/apointment",
+      path: "/doctor-appointment",
       icons: "fa-solid fa-calendar-check",
     },
     {

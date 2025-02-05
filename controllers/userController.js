@@ -107,6 +107,8 @@ export const applyDoctorController = async (req, res) => {
       message: "Doctor account cant applied !!!!",
     });
   }
+
+  3;
 };
 
 export const getAllNotificationController = async (req, res) => {
@@ -250,6 +252,26 @@ export const bookingAvailabilityController = async (req, res) => {
         message: "Appointment available",
       });
     }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "auth error",
+      success: false,
+      error,
+    });
+  }
+};
+
+export const getAppointmentController = async (req, res) => {
+  try {
+    const appointment = await appointmentModel.find({
+      userId: req.body.userId,
+    });
+    res.status(200).send({
+      success: true,
+      message: "Appointment fetched successfully",
+      data: appointment,
+    });
   } catch (error) {
     console.log(error);
     res.status(500).send({

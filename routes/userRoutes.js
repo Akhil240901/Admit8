@@ -9,6 +9,7 @@ import {
   getAllDoctorListController,
   bookAppointmentController,
   bookingAvailabilityController,
+  getAppointmentController,
 } from "../controllers/userController.js";
 import { authMiddleware } from "../middleware/authMiddleware.js";
 const router = express.Router();
@@ -47,4 +48,6 @@ router.post(
   authMiddleware,
   bookingAvailabilityController
 );
+
+router.get("/book-appointment", authMiddleware, getAppointmentController);
 export default router;

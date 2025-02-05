@@ -4,6 +4,8 @@ import {
   doctorProfileInfoController,
   updateProfileController,
   getSingleDoctorController,
+  doctorAppointmentController,
+  updateAppointmentStatusController,
 } from "../controllers/doctorController.js";
 
 const router = express.Router();
@@ -17,4 +19,13 @@ router.post("/updateDoctorProfile", authMiddleware, updateProfileController);
 //POST ||get single doctor
 router.post("/getSingleDoctor", authMiddleware, getSingleDoctorController);
 
+//POST || Get Appointment
+router.get("/doctor-appointments", authMiddleware, doctorAppointmentController);
+
+//Update status
+router.post(
+  "/update-status",
+  authMiddleware,
+  updateAppointmentStatusController
+);
 export default router;
