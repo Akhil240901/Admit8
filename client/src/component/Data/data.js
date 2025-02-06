@@ -17,11 +17,6 @@ export const userData = [
     path: "/doctor-apply",
     icons: "fa-solid fa-user-doctor",
   },
-  {
-    name: "Profile",
-    path: "/profile",
-    icons: "fa-solid fa-user",
-  },
 ];
 
 export const adminData = [

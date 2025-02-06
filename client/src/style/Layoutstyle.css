@@ -9,7 +9,10 @@
   min-height: 100%;
   width: 300px;
   border-radius: 5px;
-  background-color: rgb(51, 1, 1);
+  background-color:  rgb(171, 199, 199);;
+  
+  background-repeat: no-repeat;
+  background-size: cover;
   box-shadow: 0 0 5px gray;
   margin-right: 20px;
   color: white;
@@ -39,15 +42,24 @@
   border-radius: 5px;
   box-shadow: 0 0 2px gray;
   margin-bottom: 20px;
+  background-image: url("header_1.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+ justify-content: end;
 }
 
 .body {
   height: 90vh;
   margin-bottom: 20px;
   box-shadow: 0 0 2px gray;
+  background-color: rgb(187, 213, 213);
 }
 
 .logo h5 {
+  color: black;
   text-align: center;
   justify-items: center;
   font-weight: 600;
@@ -70,8 +82,32 @@
   flex-direction: row;
   align-items: center;
   justify-content: end;
-  margin-right: 10px;
+  gap: 15px;
 }
-.header-content i, .header-content a{
-  color: blue;
+.header-content i, .header-content h4{
+  /*color:rgb(0, 102, 134);*/
+  color: black;
+  font-size: 24px;
+  margin-right: 2px;
+  font:bold;
+  
 }
+
+.badge-notification {
+  position: relative;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .badge-notification .ant-badge {
+    font-size: 12px;
+    top: -3px;
+    right: -3px;
+  }
+}
+
+.header-content h4{
+   font-weight: 800;
+   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+

@@ -46,10 +46,12 @@ const Login = () => {
         <Form.Item label="Password" name="password">
           <Input type="text" placeholder="Enter your password" />
         </Form.Item>
-        <Link to="/register" className="p-3">
+
+        <Link to="/register" className="p-3 user">
           New User?
         </Link>
-        <button>Submit</button>
+
+        <button className="button">Submit</button>
       </Form>
     </div>
   );

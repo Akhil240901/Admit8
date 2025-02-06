@@ -9,7 +9,19 @@
                                                   border: 1px solid;
                                                   border-radius: 5px;
                                                   padding: 10px;
+                                                  background-color:  rgb(171, 199, 199);
                                                 }
                                                 h1 {
                                                   text-align: center;
                                                 }
+                                                .user{
+                                                  color: blue !important; 
+                                                  text-decoration: underline; 
+                                                  display: inline-block; 
+                                                }     
+                                                body{
+                                                  background-color:  rgb(187, 213, 213);
+                                                } 
+                                                .button{
+                                                  border-radius: 2px;
+                                                }                                         

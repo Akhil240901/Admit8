@@ -24,7 +24,7 @@ const Home = () => {
         }
       );
       if (res.data.success) {
-        setDoctor(res.data.data[0] || []);
+        setDoctor(res.data.data || []);
       }
     } catch (error) {
       // Log the error and handle it appropriately
@@ -43,7 +43,13 @@ const Home = () => {
   return (
     <Layout>
       <h1>Home</h1>
-      <Row>{doctor && <DoctorList doctor={doctor} />}</Row>
+      <Row>
+        {doctor.length > 0 ? (
+          doctor.map((doc) => <DoctorList key={doc._id} doctor={doc} />)
+        ) : (
+          <p>No doctors available</p>
+        )}
+      </Row>
     </Layout>
   );
 };

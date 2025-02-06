@@ -85,7 +85,7 @@ const Notification = () => {
             >
               <div
                 className="card-text"
-                onClick={() => navigate(notificationMSG.onClickPath)} // Wrapped in an arrow function
+                // Wrapped in an arrow function
               >
                 {notificationMSG.message}
               </div>
@@ -116,7 +116,7 @@ const Notification = () => {
             >
               <div
                 className="card-text"
-                onClick={() => navigate(notificationMSG.onClickPath)} // Wrapped in an arrow function
+                // Wrapped in an arrow function
               >
                 {notificationMSG.message}
               </div>

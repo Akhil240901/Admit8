@@ -12,7 +12,7 @@ export const doctorProfileInfoController = async (req, res) => {
     }
     res.status(201).send({
       success: true,
-      message: "Doctor fetches succefully",
+      message: "Here's the profile",
       data: doctor,
     });
   } catch (error) {

@@ -9,7 +9,7 @@ const DoctorList = ({ doctor }) => {
   return (
     <div className="card m-2">
       <div
-        className="card-header"
+        className="card-header "
         style={{ cursor: "pointer" }}
         onClick={() => navigate(`/doctors/book-appointment/${doctor._id}`)}
       >

@@ -4,7 +4,7 @@ import { adminData, userData } from "./Data/data";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Badge, message } from "antd";
-import clearUser from "../redux/features/userSlice";
+import { clearUser } from "../redux/features/userSlice";
 const Layout = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -57,15 +57,13 @@ const Layout = ({ children }) => {
               const isActive = location.pathname === menu.path;
 
               return (
-                <>
-                  <div
-                    key={menu.path || index}
-                    className={`"menu-item" ${isActive && "active"}`}
-                  >
-                    <i className={menu.icons} />
-                    <Link to={menu.path}>{menu.name}</Link>
-                  </div>
-                </>
+                <div
+                  key={menu.path || index}
+                  className={`menu-item ${isActive ? "active" : ""}`}
+                >
+                  <i className={menu.icons} />
+                  <Link to={menu.path}>{menu.name}</Link>
+                </div>
               );
             })}
             <div className={`menu-item`} onClick={logoutHandler}>
@@ -79,14 +77,13 @@ const Layout = ({ children }) => {
           <div className="header">
             <div className="header-content">
               <Badge
-                count={user && user.notification.length}
-                onClick={() => {
-                  navigate("/notification");
-                }}
+                count={user?.notification?.length || 0}
+                className="badge-notification"
+                onClick={() => navigate("/notification")}
               >
                 <i className="fa-solid fa-bell" />
               </Badge>
-              <Link to="/profile">{user?.name}</Link>
+              <h4>{user?.name}</h4>
             </div>
           </div>
 

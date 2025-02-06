@@ -49,8 +49,8 @@ const Register = () => {
         <Form.Item label="Password" name="password">
           <Input type="password" placeholder="Enter your password" />
         </Form.Item>
-        <Link to="/login" className="p-2">
-          Already registered,user?
+        <Link to="/login" className="p-2 user">
+          Already registered, user?
         </Link>
         <button>Submit</button>
       </Form>

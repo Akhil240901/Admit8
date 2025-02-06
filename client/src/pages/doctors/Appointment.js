@@ -85,7 +85,7 @@ const Appointment = () => {
           {record.status === "pending" && (
             <div>
               <button
-                className="btn btn-success "
+                className="btn btn-success"
                 onClick={handleStatus(record, "approved")}
               >
                 Approve

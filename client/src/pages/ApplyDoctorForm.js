@@ -45,7 +45,7 @@ const ApplyDoctorForm = () => {
   };
   return (
     <Layout>
-      <h1>Apply Doctor</h1>
+      <h1>Apply as Doctor</h1>
       <Form layout="vertical" className="m-4" onFinish={formHandler}>
         <h6 className="m-4">Personnel Details :</h6>
         <Row gutter={20}>
